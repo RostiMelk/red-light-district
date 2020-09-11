@@ -22,7 +22,7 @@ if (isset($_GET['portfolio']) && isset($_GET['ifttt'])) {
 
     $percent = preg_replace('/[^0-9 .,-]/', '', $portfolio);
 
-    if ( $percent >= -5 ) {
+    if ( $percent >= 0 ) {
         $color = 'green';
     } else {
         $color = 'red';
