@@ -1,7 +1,8 @@
 <?php 
 
-if (isset($_GET['portfolio'])) {
+if (isset($_GET['portfolio']) && isset($_GET['ifttt'])) {
     $portfolio_id = $_GET['portfolio'];
+    $ifttt_key = $_GET['portfolio'];
 
     $portfolio = file_get_contents('https://www.shareville.no/api/v1/portfolios/'.$portfolio_id.'/returns/today');
 
@@ -13,10 +14,12 @@ if (isset($_GET['portfolio'])) {
         $color = 'red';
     }
 
-    echo $color;
+    file_get_contents('https://maker.ifttt.com/trigger/stock_light_'.$color.'/with/key/'.$ifttt_key);
+
+    echo $color . ' light triggerd';
 
 } else {
 
-    echo 'Add portfolio in portfolio parameter';
+    echo 'Missing parameters, read README.md';
 
 }
