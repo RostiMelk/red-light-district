@@ -22,11 +22,7 @@ if (isset($_GET['portfolio']) && isset($_GET['ifttt'])) {
 
     $percent = preg_replace('/[^0-9 .,-]/', '', $portfolio);
 
-    if ( $percent >= 0 ) {
-        $color = 'green';
-    } else {
-        $color = 'red';
-    }
+    $color = $percent >= 0 ? 'green' : 'red';
 
     $url = 'https://maker.ifttt.com/trigger/stock_light_'.$color.'/with/key/'.$ifttt_key;
     $json = json_encode($_POST);
